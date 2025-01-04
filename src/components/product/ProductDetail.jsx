@@ -8,7 +8,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
-  const url = "https://mern-e-commerce-api-youtube.onrender.com/api";
+  const url = "https://shopvault-backend.onrender.com/api";
   const { addToCart } = useContext(AppContext);
   useEffect(() => {
     const fetchProduct = async () => {
