@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../context/AppContext";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RelatedProduct = ({ category }) => {
-  const { products } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { products, addToCart } = useContext(AppContext);
   const [realtedProduct, setRealtedProduct] = useState([]);
   useEffect(() => {
     setRealtedProduct(
@@ -13,6 +14,24 @@ const RelatedProduct = ({ category }) => {
       )
     );
   }, [category, products]);
+
+  const handleBuy = () => {
+    addToCart(
+      product._id,
+      product.title,
+      product.price,
+      1,
+      realtedProduct.imgSrc
+    );
+    navigate("/cart");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
 
   return (
     <>
@@ -49,10 +68,28 @@ const RelatedProduct = ({ category }) => {
                   <div className="card-body">
                     <h5 className="card-title">{product.title}</h5>
                     <div className="my-3">
-                      <button className="btn btn-primary mx-3">
-                        {product.price} {"₹"}
+                       <Link
+                                         to={`/product/${product._id}`}
+                                         > <button className="btn btn-primary mx-3"
+                                         onClick={scrollToTop}
+                                          >
+                                            {product.price} {"₹"}
+                      
+                                          </button></Link>
+                      <button
+                        className="btn btn-warning"
+                        onClick={() =>
+                          addToCart(
+                            product._id,
+                            product.title,
+                            product.price,
+                            1,
+                            product.imgSrc
+                          )
+                        }
+                      >
+                        Add To Cart
                       </button>
-                      <button className="btn btn-warning">Add To Cart</button>
                     </div>
                   </div>
                 </div>

@@ -11,21 +11,7 @@ const PaymentConfirmation = () => {
   const { cart, clearCart, url,userAddress, user, user_Order } = useContext(AppContext);
 
 
-   const [qty, setQty] = useState(0);
-      const [price, setPrice] = useState(0);
-      useEffect(() => {
-        let qty = 0;
-        let price = 0;
-        if (cart?.items) {
-          for (let i = 0; i < cart.items?.length; i++) {
-            qty += cart.items[i].qty;
-            price += cart.items[i].price;
-          }
-        }
-        setPrice(price);
-        setQty(qty);
-      }, [cart]);
-
+ 
 
 
   const [transactionId, setTransactionId] = useState("");
@@ -38,11 +24,43 @@ const PaymentConfirmation = () => {
     }
   }, [userOrder]);
   
-  const submitHandler =()=>{
-    navigate("/")
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    transactionId: '',
+});
+const [responseMessage, setResponseMessage] = useState('');
 
-  }
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+};
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const name  = await user.name;
+      const email  = await user.email;
+setFormData({ name: name, email: email, transactionId: formData.transactionId }); // Clear form
+
+// console.log(formData)
+        const response = await axios.post(`${url}/product/send-email`, formData);
+        setResponseMessage(response.data);
+        alert("Email is send to owner and will conform the transation id and dispatch product");
+        navigate("/")
+    } catch (error) {
+        console.error('Error sending email:', error);
+        setResponseMessage('Error sending email.');
+    }
+};
   // console.log("latestOrder", latestOrder);
+
+  const [showQRCode, setShowQRCode] = useState(false);
+
+  // Function to toggle the QR code visibility
+  const toggleQRCode = () => {
+      setShowQRCode((prev) => !prev);
+  };
 
   return (
     <div className="container my-5">
@@ -65,73 +83,7 @@ const PaymentConfirmation = () => {
                 {/* <TableProduct cart={cart} /> */}
                 <ShowOrderProduct items={latestOrder?.orderItems} />
 
-                {/* <table className="table table-bordered border-primary bg-dark text-center">
-                  <thead>
-                    <tr>
-                      <th scope="col" className="bg-dark text-light">
-                        Product Img
-                      </th>
-                      <th scope="col" className="bg-dark text-light">
-                        Title
-                      </th>
-                      <th scope="col" className="bg-dark text-light">
-                        Price
-                      </th>
-                      <th scope="col" className="bg-dark text-light">
-                        Qty
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                  {cart?.items?.map((product) => (
-                    <tr key={product._id}>
-                      <th scope="row" className="bg-dark text-light">
-                        <img
-                          src={product.imgSrc}
-                          style={{ width: "50px", height: "50px" }}
-                        />
-                      </th>
-                      <td className="bg-dark text-light">{product.title}</td>
-                      <td className="bg-dark text-light">{product.price}</td>
-                      <td className="bg-dark text-light">{product.qty}</td>
-                    </tr>
-                  ))}
-                  
-                    <tr >
-                      <th scope="row" className="bg-dark text-light"></th>
-                      <td className="bg-dark text-light">
-                        {" "}
-                        <button
-                          className="btn btn-primary"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          Total
-                        </button>{" "}
-                      </td>
-                      <td className="bg-dark text-light">
-                        {" "}
-                        <button
-                          className="btn btn-warning"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          {price}
-                        </button>
-                      </td>
-                      <td className="bg-dark text-light">
-                        <button
-                          className="btn btn-info"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          {qty}
-                        </button>
-                      </td>
-                      
-                    </tr>
-
-                 
-          </tbody>
-                </table> */}
+               
               </td>
               <td className="bg-dark text-light">
                 <ul style={{ fontWeight: "bold" }}>
@@ -149,25 +101,40 @@ const PaymentConfirmation = () => {
       </div>
       <h1 className="text-center">Bank Information</h1>
       <div className="bg-light bg-dark p-4 rounded">
+           
         <h3>Sellers Bank Details</h3>
-        <ul>
-          <li>Bank Name: ABC Bank</li>
-          <li>Account Number: 123456789</li>
-          <li>IFSC Code: ABCD0123456</li>
-          <li>Account Holder Name: John Doe</li>
-        </ul>
-      </div>
+            {!showQRCode && (
+                 <ul>
+                     <li>Bank Name: ABC Bank</li>
+                     <li>Account Number: 123456789</li>
+                     <li>IFSC Code: ABCD0123456</li>
+                     <li>Account Holder Name: John Doe</li>
+                 </ul>
+            )}
+            <button onClick={toggleQRCode} className="btn btn-primary mt-3">
+                {showQRCode ? 'Hide QR Code' : 'Show QR Code'}
+            </button>
+            {showQRCode && (
+                <img
+                    src={"https://imgs.search.brave.com/5GwjKC_Joy7I2-t1vt7bfCLKmPHQzUFpFSVBZ1CnmMY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnNz/dGF0aWMubmV0L2JW/dERILnBuZw"}
+                    alt="QR Code"
+                    className="mt-3"
+                    style={{ width: '300px', height: '300px' }}
+                />
+            )}
+        </div>
 
       <h2 className="text-center my-4">Enter Transaction ID</h2>
-      <form  className="text-center" onSubmit={submitHandler} >
+      <form  className="text-center" onSubmit={handleSubmit} >
         <div className="mb-3">
           <input
             type="text"
+            name = "transactionId"
             className="form-control"
             placeholder="Transaction ID"
-            value={transactionId}
+            value={formData.transactionId}
             required
-            onChange={(e) => setTransactionId(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <button type="submit"  className="btn btn-primary" >

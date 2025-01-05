@@ -19,7 +19,7 @@ const Navbar = () => {
     );
   };
   const filterbyPrice = (price) => {
-    setFilteredData(products.filter((data) => data.price >= price));
+    setFilteredData(products.filter((data) => data.price <= price));
   };
 
   const submitHandler = (e) => {
@@ -115,20 +115,20 @@ const Navbar = () => {
             >
               Hedphones
             </div>
-            <div className="items" onClick={() => filterbyPrice(15999)}>
-              15999
+            <div className="items" onClick={() => filterbyPrice(15000)}>
+              15000
             </div>
-            <div className="items" onClick={() => filterbyPrice(25999)}>
-              25999
+            <div className="items" onClick={() => filterbyPrice(50000)}>
+            50000
             </div>
-            <div className="items" onClick={() => filterbyPrice(49999)}>
-              49999
+            <div className="items" onClick={() => filterbyPrice(90000)}>
+              90000
             </div>
-            <div className="items" onClick={() => filterbyPrice(69999)}>
-              69999
+            <div className="items" onClick={() => filterbyPrice(150000)}>
+              150000
             </div>
-            <div className="items" onClick={() => filterbyPrice(89999)}>
-              89999
+            <div className="items" onClick={() => filterbyPrice(300000)}>
+              300000
             </div>
           </div>
         )}

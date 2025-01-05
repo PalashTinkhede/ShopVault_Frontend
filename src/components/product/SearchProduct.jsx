@@ -6,20 +6,26 @@ import { Link ,useParams} from "react-router-dom";
 const SearchProduct = () => {
   const { products } = useContext(AppContext);
   const [searchProduct, setSearchProduct] = useState([]);
+  
 
-  const {term} = useParams()
+  const {term} = useParams();
 
-  console.log(useParams())
 
   useEffect(() => {
-    setSearchProduct(
-      products.filter(
-        (data) => data?.title?.toLowerCase().includes(term.toLowerCase()))
-    );
-  }, [term, products]);
+    console.log('Products:', products);
+    console.log('Search Term:', term);
+
+    if (Array.isArray(products) && typeof term === 'string') {
+      console.log("YESS");
+        const filteredProducts = products.filter((data) =>
+            data?.title?.toLowerCase().includes(term.toLowerCase())
+        );
+        console.log('Filtered Products:', filteredProducts);
+        setSearchProduct(filteredProducts);
+    }
+}, [term, products]);
 
 
-console.log(searchProduct)
   return (
     <>
       <div className="container text-center">
