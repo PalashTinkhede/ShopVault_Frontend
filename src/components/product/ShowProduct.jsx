@@ -11,8 +11,8 @@ const ShowProduct = () => {
 
   }
   return (
-    <>
-      <div className="container  d-flex justify-content-center align-items-center">
+  
+      <div className=" bg-backgroundColor  d-flex justify-content-center align-items-center">
         <div className="row container d-flex justify-content-center align-items-center my-5">
           {filteredData?.map((product) => (
             <div
@@ -72,7 +72,7 @@ const ShowProduct = () => {
           ))}
         </div>
       </div>
-    </>
+    
   );
 };
 

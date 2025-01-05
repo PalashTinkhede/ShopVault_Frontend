@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import  { useEffect, useState } from "react";
+import React ,{ useEffect, useState } from "react";
 import AppContext from "./AppContext";
 import axios from "axios";
 import {  toast, Bounce } from "react-toastify";
@@ -17,6 +17,7 @@ const AppState = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [user, setUser] = useState();
+  // const [isLogin , setIsLogin] = useState(false)
   const [cart, setCart] = useState([]);
   const [reload, setReload] = useState(false);
   const [userAddress, setUserAddress] = useState("");

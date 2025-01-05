@@ -21,7 +21,7 @@ const ShowOrderProduct = ({ items }) => {
 
   return (
     <>
-      <table className="table table-bordered border-primary bg-dark text-center">
+      <table className="table table-bordered border-primary  text-center">
         <thead>
           <tr>
             <th scope="col" className="bg-dark text-light">

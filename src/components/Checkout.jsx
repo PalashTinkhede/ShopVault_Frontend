@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/AppContext";
 import axios from "axios";
 import TableProduct from "./TableProduct";
@@ -26,50 +26,25 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     try {
-      const orderRepons = await axios.post(`${url}/payment/checkout`, {
+      const paymentData = {
+        orderId: "opaskjdlasdjsdakd",
+        paymentId: "ajksdhiausgdkjayasd",
+        signature: "aksljdjhahsdiyasd",
         amount: price,
-        qty: qty,
-        cartItems: cart?.items,
-        userShipping: userAddress,
+        orderItems: cart?.items,
         userId: user._id,
-      });
+        userShipping: userAddress,
+      };
+      // console.log(userAddress)
+      const api = await axios.post(
+        `${url}/payment/verify-payment`,
+        paymentData
+      );
 
-      console.log(" order response ", orderRepons);
-      const { orderId, amount: orderAmount } = orderRepons.data;
-
-     
-       
-        
-         
-          const paymentData = {
-            orderId: "opaskjdlasdjsdakd",
-            paymentId: "ajksdhiausgdkjayasd",
-            signature: "aksljdjhahsdiyasd",
-            amount: orderAmount,
-            orderItems: cart?.items,
-            userId: user._id,
-            userShipping: userAddress,
-          };
-console.log(userAddress)
-          const api = await axios.post(
-            `${url}/payment/verify-payment`,
-            paymentData
-          );
-
-          console.log("razorpay res ", api.data);
-          console.log("Yess")
-
-          if (api.data.success) {
-            
-            clearCart();
-            navigate("/oderconfirmation");
-          }
-        
-        
-    
-    
-
-     
+      if (api.data.success) {
+        clearCart();
+        navigate("/oderconfirmation");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -111,7 +86,7 @@ console.log(userAddress)
           </tbody>
         </table>
       </div>
-      
+
       <div className="container text-center my-5">
         <button
           className="btn btn-secondary btn-lg bg-primary"

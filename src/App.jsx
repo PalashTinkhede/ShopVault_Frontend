@@ -14,15 +14,21 @@ import Cart from './components/Cart'
 import Address from './components/Address'
 import Checkout from './components/Checkout'
 import OrderConfirmation from './components/OrderConfirmation'
+import Home from "./components/Home";
+import RandomDots from "./components/Randomdots";
 
 const App = () => {
   // const {} = useContext(AppContext)
   return (
+    <>
+    <div className="bg-backgroundColor h-screen">
     <Router>
       <Navbar />
+      <RandomDots/>
       <ToastContainer />
-      <Routes>
-        <Route path="/" element={<ShowProduct />} />
+      <Routes >
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ShowProduct />} />
         <Route path="/product/search/:term" element={<SearchProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/register" element={<Register />} />
@@ -34,6 +40,8 @@ const App = () => {
         <Route path="/oderconfirmation" element={<OrderConfirmation />} />
       </Routes>
     </Router>
+    </div>
+    </>
   );
 };
 

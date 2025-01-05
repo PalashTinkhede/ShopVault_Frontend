@@ -25,7 +25,8 @@ const Cart = () => {
 
   // console.log("my cart", cart);
   return (
-    <>
+    
+    <div className=" bg-backgroundColor  justify-content-center align-items-center">
       {cart?.items?.length == 0 ? (
         <>
         <div className="text-center my-5">
@@ -61,7 +62,7 @@ const Cart = () => {
       {cart?.items?.map((product) => (
         <div
           key={product._id}
-          className="container p-3 bg-dark my-5 text-center"
+          className="container p-3 bg-dark text-white text-2xl my-5 text-center"
         >
           <div
             style={{
@@ -147,7 +148,8 @@ const Cart = () => {
           </button>
         </div>
       )}
-    </>
+      </div>
+    
   );
 };
 

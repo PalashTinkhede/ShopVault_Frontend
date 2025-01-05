@@ -35,7 +35,7 @@ const RelatedProduct = ({ category }) => {
 
   return (
     <>
-      <div className="container text-center">
+      <div className=" text-center bg-backgroundColor">
         <h1>Related Product</h1>
         <div className="container  d-flex justify-content-center align-items-center">
           <div className="row container d-flex justify-content-center align-items-center my-5">
@@ -65,8 +65,8 @@ const RelatedProduct = ({ category }) => {
                       }}
                     />
                   </Link>
-                  <div className="card-body">
-                    <h5 className="card-title">{product.title}</h5>
+                  <div className="card-body ">
+                    <h5 className="card-title text-white">{product.title}</h5>
                     <div className="my-3">
                        <Link
                                          to={`/product/${product._id}`}

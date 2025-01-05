@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import RelatedProduct from "./RelatedProduct";
 import AppContext from "../../context/AppContext";
+import Footer from "../footer";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -42,7 +43,7 @@ const ProductDetail = () => {
   return (
     <>
       <div
-        className="container text-center my-5"
+        className="container text-center text-white my-5"
         style={{
           display: "flex",
           justifyContent: "space-evenly",
@@ -97,6 +98,7 @@ const ProductDetail = () => {
       </div>
 
       <RelatedProduct category={product?.category} />
+      <Footer/>
     </>
   );
 };

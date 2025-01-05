@@ -1,4 +1,4 @@
-import  { useContext, useState } from "react";
+import  React ,{ useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import AppContext from "../context/AppContext";
 
@@ -28,112 +28,63 @@ const Navbar = () => {
     setSearchTerm(" ");
   };
   return (
-    <>
-      <div className="nav sticky-top">
-        <div className="nav_bar">
-          <Link
-            to={"/"}
-            className="left"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <h3>ShopVault</h3>
-          </Link>
-          <form className="search_bar" onSubmit={submitHandler}>
-            <span className="material-symbols-outlined">search</span>{" "}
-            <input
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              type="text"
-              placeholder="Search Products..."
-            />
-          </form>
-          <div className="right">
-            {isAuthenticated && (
-              <>
-                <Link
-                  to={"/cart"}
-                  type="button"
-                  className="btn btn-primary position-relative mx-3"
-                >
-                  <span className="material-symbols-outlined">
-                    shopping_cart
-                  </span>
-
-                  {cart?.items?.length > 0 && (
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {cart?.items?.length}
-                      <span className="visually-hidden">unread messages</span>
-                    </span>
-                  )}
-                </Link>
-
-                <Link to={"/profile"} className="btn btn-info mx-3">
-                  profile
-                </Link>
-                <button
-                  className="btn btn-danger mx-3"
-                  onClick={() => {
-                    logout();
-                    navigate("/");
-                  }}
-                >
-                  logout
-                </button>
-              </>
-            )}
-
-            {!isAuthenticated && (
-              <>
-                <Link to={"/login"} className="btn btn-secondary mx-3">
-                  login
-                </Link>
-                <Link to={"/register"} className="btn btn-info mx-3">
-                  register
-                </Link>
-              </>
-            )}
-          </div>
+    <header className="bg-gray-900 text-white">
+      <div className="container mx-auto flex items-center justify-between py-4">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <div className="text-3xl font-bold text-blue-500">◎</div>
+         <Link to={"/"}> <h1 className="text-xl font-semibold">ShopVault</h1></Link>
         </div>
 
-        {location.pathname == "/" && (
-          <div className="sub_bar">
-            <div className="items" onClick={() => setFilteredData(products)}>
-              No Filter
-            </div>
-            <div className="items" onClick={() => filterbyCategory("mobiles")}>
-              Mobiles
-            </div>
-            <div className="items" onClick={() => filterbyCategory("laptops")}>
-              Laptops
-            </div>
-            <div className="items" onClick={() => filterbyCategory("cameras")}>
-              Camera&apos;s
-            </div>
-            <div
-              className="items"
-              onClick={() => filterbyCategory("headphones")}
+        {/* Navigation Links */}
+        <nav className="hidden md:flex space-x-6">
+          <a href="/products" className="hover:text-blue-400 text-gray-300 text-lg">Products</a>
+          <a href="#about" className="hover:text-blue-400 text-gray-300 text-lg">About</a>
+          <a href="#blog" className="hover:text-blue-400 text-gray-300 text-lg">Blog</a>
+          { isAuthenticated && 
+
+          <a href="/cart" className="hover:text-blue-400 text-gray-300 text-lg">Cart ({cart == null ? "" : cart.length})</a>
+        }
+
+        </nav>
+
+        {/* Call to Action Button */}
+        <div className="hidden md:flex">
+        { isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700">
+            Logout
+          </button></Link>
+
+        }
+        { !isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-blue-600 rounded-full hover:bg-blue-700">
+            Login
+          </button></Link>
+
+        }
+         
+         
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden ">
+          <button className="text-gray-300 focus:outline-none">
+            <svg
+              className="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              Hedphones
-            </div>
-            <div className="items" onClick={() => filterbyPrice(15000)}>
-              15000
-            </div>
-            <div className="items" onClick={() => filterbyPrice(50000)}>
-            50000
-            </div>
-            <div className="items" onClick={() => filterbyPrice(90000)}>
-              90000
-            </div>
-            <div className="items" onClick={() => filterbyPrice(150000)}>
-              150000
-            </div>
-            <div className="items" onClick={() => filterbyPrice(300000)}>
-              300000
-            </div>
-          </div>
-        )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </>
+    </header>
   );
 };
 
