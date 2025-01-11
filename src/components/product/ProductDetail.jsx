@@ -9,8 +9,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
-  // const url = "https://shopvault-backend.onrender.com/api";
-  const url = "http://localhost:1000/api";
+  const url = "https://shopvault-backend.onrender.com/api";
+  // const url = "http://localhost:1000/api";
   const { addToCart } = useContext(AppContext);
   useEffect(() => {
     const fetchProduct = async () => {

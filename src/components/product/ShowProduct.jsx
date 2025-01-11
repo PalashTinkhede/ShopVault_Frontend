@@ -22,7 +22,7 @@ const ShowProduct = () => {
             >
               <div
                 className="card bg-dark text-light text-center"
-                style={{ width: "18rem" }}
+                style={{ width: "20rem" }}
               >
                 <Link
                   to={`/product/${product._id}`}
@@ -33,7 +33,7 @@ const ShowProduct = () => {
                     className="card-img-top"
                     alt="..."
                     style={{
-                      width: "200px",
+                      width: "250px",
                       height: "200px",
                       borderRadius: "10px",
                       border: "2px solid yellow",
@@ -41,17 +41,17 @@ const ShowProduct = () => {
                   />
                 </Link>
                 <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <div className="my-3">
+                  <h5 className="card-title text-xl text-yellow-300">{product.title}</h5>
+                  <div className="my-3 mx-3">
                    <Link
                    to={`/product/${product._id}`}
-                   > <button className="btn btn-primary mx-3"
-                    >
+                   className="mx-3"
+                   > 
                       {product.price} {"₹"}
 
-                    </button></Link>
+                    </Link>
                     <button
-                      className="btn btn-warning"
+                      className="btn btn-primary"
                       onClick={() =>
                         addToCart(
                           product._id,

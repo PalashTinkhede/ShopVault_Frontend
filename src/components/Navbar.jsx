@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const { setFilteredData, products, logout, isAuthenticated, cart } =
     useContext(AppContext);
-  console.log("user cart = ",cart)
+  // console.log("user cart = ",cart)
 
   const filterbyCategory = (cat) => {
     setFilteredData(
@@ -43,14 +43,16 @@ const Navbar = () => {
           <a href="#blog" className="hover:text-blue-400 text-gray-300 text-lg">Blog</a>
           { isAuthenticated && 
 
-          <a href="/cart" className="hover:text-blue-400 text-gray-300 text-lg">Cart ({cart == null ? cart.items.length : 'Loading...'})</a>
+          <a href="/cart" className="hover:text-blue-400 text-gray-300 text-lg">cart({    
+        cart?.items?.length > 0 && (                     cart?.items?.length
+          )})</a>
         }
 
         </nav>
 
         {/* Call to Action Button */}
-        <div className="hidden md:flex">
-        { isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700">
+        <div className="hidden md:flex"> 
+        { isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700" onClick={logout}>
             Logout
           </button></Link>
 
