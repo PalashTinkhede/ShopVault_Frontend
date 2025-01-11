@@ -63,8 +63,8 @@ const Address = () => {
           borderRadius: "10px",
         }}
       >
-        <h1 className="text-center">Shipping Address</h1>
-        <form onSubmit={submitHandler} className="my-3">
+        <h1 className="text-center text-white">Shipping Address</h1>
+        <form onSubmit={submitHandler} className="my-3 text-white">
           <div className="row">
             <div className="mb-3 col-md-4 ">
               <label htmlFor="exampleInputEmail1" className="form-label">

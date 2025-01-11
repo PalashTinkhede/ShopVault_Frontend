@@ -63,7 +63,7 @@ setFormData({ name: name, email: email, transactionId: formData.transactionId })
   };
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 bg-backgroundColor">
       <div className="container">
         <table className="table table-bordered border-primary bg-dark">
           <thead className="bg-dark">
@@ -100,7 +100,7 @@ setFormData({ name: name, email: email, transactionId: formData.transactionId })
         </table>
       </div>
       <h1 className="text-center">Bank Information</h1>
-      <div className="bg-light bg-dark p-4 rounded">
+      <div className="bg-light text-white bg-dark p-4 rounded">
            
         <h3>Sellers Bank Details</h3>
             {!showQRCode && (
@@ -124,7 +124,7 @@ setFormData({ name: name, email: email, transactionId: formData.transactionId })
             )}
         </div>
 
-      <h2 className="text-center my-4">Enter Transaction ID</h2>
+      <h2 className="text-center  my-4">Enter Transaction ID</h2>
       <form  className="text-center" onSubmit={handleSubmit} >
         <div className="mb-3">
           <input

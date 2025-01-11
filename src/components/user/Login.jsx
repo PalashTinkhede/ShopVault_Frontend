@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import AppContext from "../../context/AppContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { login } = useContext(AppContext);
@@ -72,7 +72,11 @@ const Login = () => {
             <button type="submit" className="btn btn-primary">
               Login
             </button>
+            <Link to={"/register"}><button type="submit" className="btn btn-primary">
+              register
+            </button></Link>
           </div>
+         
         </form>
       </div>
     </>

@@ -3,6 +3,7 @@ import RandomDots from "./Randomdots";
 import AppContext from "../context/AppContext";
 import TestimonialsSection from "./testimonials";
 import Footer from "./footer";
+import { Link } from "react-router-dom";
 
 function Home() {
     const { products} = useContext(AppContext);
@@ -149,39 +150,39 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="bg-gray-800 p-3 w-3/4 rounded-lg">
               <img
-                src={products.length > 0 ? products[0].imgSrc : 'Loading...'}
+                src={products.length > 0 ? products[0]?.imgSrc : 'Loading...'}
                 alt="Product 1"
                 className="mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[0].title : 'Loading...'}</h3>
-              <p className="text-gray-400 mb-4">{products.length > 0 ? products[0].price : 'Loading...'}</p>
-              <button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
+              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[0]?.title : 'Loading...'}</h3>
+              <p className="text-gray-400 mb-4">{products.length > 0 ? products[0]?.price : 'Loading...'}</p>
+              <Link to={`/product/${products[0]?._id}`}><button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
                 View Details
-              </button>
+              </button></Link>
             </div>
             <div className="bg-gray-800 p-6 w-3/4 rounded-lg">
               <img
-                src={products.length > 0 ? products[1].imgSrc : 'Loading...'}
+                src={products.length > 0 ? products[1]?.imgSrc : 'Loading...'}
                 alt="Product 2"
                 className="mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[1].title : 'Loading...'}</h3>
-              <p className="text-gray-400 mb-4">${products.length > 0 ? products[1].price : 'Loading...'}</p>
-              <button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
+              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[1]?.title : 'Loading...'}</h3>
+              <p className="text-gray-400 mb-4">${products.length > 0 ? products[1]?.price : 'Loading...'}</p>
+              <Link to={`/product/${products[1]?._id}`}><button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
                 View Details
-              </button>
+              </button></Link>
             </div>
             <div className="bg-gray-800 p-6 w-3/4 rounded-lg">
               <img
-                src={products.length > 0 ? products[2].imgSrc : 'Loading...'}
+                src={products.length > 0 ? products[2]?.imgSrc : 'Loading...'}
                 alt="Product 3"
                 className="mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[2].title : 'Loading...'}</h3>
-              <p className="text-gray-400 mb-4">{products.length > 0 ? products[2].price : 'Loading...'}</p>
-              <button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
-               View Details
-              </button>
+              <h3 className="text-xl font-semibold text-blue-400 mb-2">{products.length > 0 ? products[2]?.title : 'Loading...'}</h3>
+              <p className="text-gray-400 mb-4">{products.length > 0 ? products[2]?.price : 'Loading...'}</p>
+              <Link to={`/product/${products[2]?._id}`}><button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
+                View Details
+              </button></Link>
             </div>
             
           </div>

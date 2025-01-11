@@ -7,9 +7,9 @@ import {  toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AppState = (props) => {
-  // const url = "http://localhost:1000/api";
+  const url = "http://localhost:1000/api";
 
-  const url = "https://shopvault-backend.onrender.com/api";
+  // const url = "https://shopvault-backend.onrender.com/api";
 
 
   const [products, setProducts] = useState([]);
@@ -66,6 +66,7 @@ const AppState = (props) => {
       }
     );
     // alert(api.data.message)
+    console.log(api.data)
     toast.success(api.data.message, {
       position: "top-right",
       autoClose: 1500,
@@ -95,22 +96,41 @@ const AppState = (props) => {
       }
     );
     // alert(api.data.message)
-    toast.success(api.data.message, {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
+    console.log(api.data);
+    if(api.data.success == false){
+      toast.error(api.data.message, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+
+    }
+    else{
+      toast.success(api.data.message, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      setIsAuthenticated(true);
+      setToken(api.data.token);
+      localStorage.setItem("token", api.data.token);
+    }
+   
 
     // console.log("user login ",api.data)
-    setToken(api.data.token);
-    setIsAuthenticated(true);
-    localStorage.setItem("token", api.data.token);
+    
     return api.data;
   };
 

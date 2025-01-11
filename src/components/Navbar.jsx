@@ -1,4 +1,4 @@
-import  React ,{ useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import AppContext from "../context/AppContext";
 
@@ -33,41 +33,75 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <div className="text-3xl font-bold text-blue-500">◎</div>
-         <Link to={"/"}> <h1 className="text-xl font-semibold">ShopVault</h1></Link>
+          <Link to={"/"}>
+            {" "}
+            <h1 className="text-xl font-semibold">ShopVault</h1>
+          </Link>
         </div>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex space-x-6">
-          <a href="/products" className="hover:text-blue-400 text-gray-300 text-lg">Products</a>
-          <a href="#about" className="hover:text-blue-400 text-gray-300 text-lg">About</a>
-          <a href="#blog" className="hover:text-blue-400 text-gray-300 text-lg">Blog</a>
-          { isAuthenticated && 
-
-          <a href="/cart" className="hover:text-blue-400 text-gray-300 text-lg">cart({    
-        cart?.items?.length > 0 && (                     cart?.items?.length
-          )})</a>
-        }
-
+        <nav className="hidden md:flex space-x-16">
+          <a
+            href="/products"
+            className="hover:text-blue-400 text-gray-300 text-xl"
+          >
+            Products
+          </a>
+          <a
+            href="/about"
+            className="hover:text-blue-400 text-gray-300 text-xl"
+          >
+            About
+          </a>
+          <a href="#features" className="hover:text-blue-400 text-gray-300 text-xl">
+            Features
+          </a>
+          
         </nav>
-
+        
         {/* Call to Action Button */}
-        <div className="hidden md:flex"> 
-        { isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700" onClick={logout}>
-            Logout
-          </button></Link>
+        <div className="hidden md:flex">
 
-        }
-        { !isAuthenticated && <Link to={"/login"}><button className="px-4 py-2 bg-blue-600 rounded-full hover:bg-blue-700">
-            Login
-          </button></Link>
+        {isAuthenticated && (
+            <Link
+              to={"/cart"}
+              type="button"
+              className="px-4 py-2 border rounded-3xl position-relative mx-3"
+            >
+              <div className="flex">
+              <span className="material-symbols-outlined">shopping_cart</span>
 
-        }
-         
-         
+              {cart?.items?.length > 0 && (
+                <span className="position-absolute  top-2 start-110 translate-middle badge rounded-pill bg-danger">
+                  {cart?.items?.length}
+                  <span className="visually-hidden">unread messages</span>
+                </span>
+              )}
+              </div>
+            </Link>
+          )}
+
+          {isAuthenticated && (
+            <Link to={"/login"}>
+              <button
+                className="px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </Link>
+          )}
+          {!isAuthenticated && (
+            <Link to={"/login"}>
+              <button className="px-4 py-2 bg-blue-600 rounded-full hover:bg-blue-700">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden ">
+        <div className="md:hidden  ">
           <button className="text-gray-300 focus:outline-none">
             <svg
               className="w-6 h-6"

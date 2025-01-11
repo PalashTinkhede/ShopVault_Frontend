@@ -53,7 +53,7 @@ const Checkout = () => {
   return (
     <>
       <div className="container  my-3">
-        <h1 className="text-center">Order Summary</h1>
+        <h1 className="text-center text-6xl text-white my-10">Order Summary</h1>
 
         <table className="table table-bordered border-primary bg-dark">
           <thead className="bg-dark">
@@ -72,7 +72,7 @@ const Checkout = () => {
               <td className="bg-dark text-light">
                 <TableProduct cart={cart} />
               </td>
-              <td className="bg-dark text-light">
+              <td className="bg-dark text-white">
                 <ul style={{ fontWeight: "bold" }}>
                   <li>Name : {userAddress?.fullName}</li>
                   <li>Phone : {userAddress?.phoneNumber}</li>

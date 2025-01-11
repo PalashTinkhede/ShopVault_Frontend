@@ -16,6 +16,7 @@ import Checkout from './components/Checkout'
 import OrderConfirmation from './components/OrderConfirmation'
 import Home from "./components/Home";
 import RandomDots from "./components/Randomdots";
+import About from "./components/About";
 
 const App = () => {
   // const {} = useContext(AppContext)
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/shipping" element={<Address />} />
