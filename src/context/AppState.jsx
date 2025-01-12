@@ -7,9 +7,9 @@ import {  toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AppState = (props) => {
-  // const url = "http://localhost:1000/api";
+  const url = "http://localhost:1000/api";
 
-  const url = "https://shopvault-backend.onrender.com/api";
+  // const url = "https://shopvault-backend.onrender.com/api";
 
 
   const [products, setProducts] = useState([]);
@@ -66,7 +66,7 @@ const AppState = (props) => {
       }
     );
     // alert(api.data.message)
-    console.log(api.data)
+    // console.log(api.data)
     toast.success(api.data.message, {
       position: "top-right",
       autoClose: 1500,

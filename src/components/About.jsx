@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center py-12">
+    <div className="bg-backgroundColor text-white min-h-screen flex flex-col items-center py-12">
       {/* Header Section */}
       <div className="text-center max-w-3xl">
         <h1 className="text-6xl font-bold mb-6">About Me</h1>
@@ -52,9 +52,9 @@ const About = () => {
         <p className="text-gray-400">
           Feel free to reach out to me for collaborations, job opportunities, or just to say hi!
         </p>
-        <button className="mt-6 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg">
-          Contact Me
-        </button>
+        <a href="https://portfolio-eta-two-33.vercel.app/"><button className="mt-6 px-6 py-2 bg-indigo-600  hover:bg-indigo-500 text-white font-semibold rounded-lg" >
+          Protfolio Website
+        </button></a>
       </div>
     </div>
   );

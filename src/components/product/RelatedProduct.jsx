@@ -38,7 +38,7 @@ const RelatedProduct = ({ category }) => {
       <div className=" text-center bg-backgroundColor">
         <h1>Related Product</h1>
         <div className="container d-flex justify-content-center align-items-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-9 my-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 px-9 my-9">
         {realtedProduct.map((product, index) => (
                           <Link to={`/product/${product._id}`}>
                             <div

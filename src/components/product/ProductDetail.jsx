@@ -9,8 +9,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
-  const url = "https://shopvault-backend.onrender.com/api";
-  // const url = "http://localhost:1000/api";
+  // const url = "https://shopvault-backend.onrender.com/api";
+  const url = "http://localhost:1000/api";
   const { addToCart } = useContext(AppContext);
   useEffect(() => {
     const fetchProduct = async () => {
@@ -77,6 +77,22 @@ const ProductDetail = () => {
               {product?.qty != 0 && (
                 <button
                   className="w-full bg-white text-black py-3 font-medium rounded-lg hover:bg-gray-200 "
+                  onClick={handleBuy}
+                >
+                 Buy now
+                </button>
+              )}
+              {product?.qty == 0 && (
+                <button
+                  className="w-full bg-gray-400 text-black py-3 font-medium rounded-lg  disabled "
+                 
+                >
+                  Out Of Stock
+                </button>
+              )}
+              {product?.qty != 0 && (
+                <button
+                  className="w-full bg-white text-black py-3 font-medium rounded-lg hover:bg-gray-200 "
                   onClick={() =>
                     addToCart(
                       product?._id,
@@ -95,12 +111,10 @@ const ProductDetail = () => {
                   className="w-full bg-gray-400 text-black py-3 font-medium rounded-lg  disabled "
                  
                 >
-                  Out Of Stock
+                  Buy now
                 </button>
               )}
-              <button className="w-full bg-gray-800 py-3 font-medium rounded-lg hover:bg-gray-700" onClick={handleBuy}>
-                BUY IT NOW
-              </button>
+             
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ function Home() {
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
               <a
-                href="/products"
+                href="/product"
                 className="px-6 py-3 bg-blue-500 rounded-3xl hover:bg-blue-600 text-white"
               >
                 Shop Now

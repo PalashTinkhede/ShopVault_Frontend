@@ -6,7 +6,12 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState(" ");
   const navigate = useNavigate();
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    console.log("Yess")
+    setIsMenuOpen(!isMenuOpen);
+  };
   const { setFilteredData, products, logout, isAuthenticated, cart } =
     useContext(AppContext);
   // console.log("user cart = ",cart)
@@ -28,6 +33,7 @@ const Navbar = () => {
     setSearchTerm(" ");
   };
   return (
+    <>
     <header className="bg-gray-900 text-white">
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo */}
@@ -47,12 +53,14 @@ const Navbar = () => {
           >
             Products
           </a></Link>
-          <Link to={"/about"}><a
+          <Link to={"/about"}>
+          <a
             href=""
             className="hover:text-blue-400 text-gray-300 text-xl"
           >
             About
           </a></Link>
+          
           <a href="#features" className="hover:text-blue-400 text-gray-300 text-xl">
             Features
           </a>
@@ -99,10 +107,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden  ">
-          <button className="text-gray-300 focus:outline-none">
+        <button className="lg:hidden md:hidden text-gray-300 focus:outline-none" onClick={toggleMenu}>
             <svg
               className="w-6 h-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -119,8 +124,74 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-      </div>
+
+        {/* Mobile Menu Button */}
+        {isMenuOpen && (
+        
+          <nav className=" md:hidden flex-col mx-16 space-x-16 justify-center align-middle">
+          <Link to={"/product"}><a
+            href=""
+            className="block hover:text-blue-400 font-bold text-gray-300 text-xl"
+          >
+            Products
+          </a></Link>
+          <Link to={"/about"}>
+          <a
+            href=""
+            className="block hover:text-blue-400 font-bold text-gray-300 text-xl"
+          >
+            About
+          </a></Link>
+
+          <Link>
+          <a href="#features" className="block  hover:text-blue-400 font-bold py-2 text-gray-300 text-xl">
+            Features
+          </a></Link>
+          
+        
+       
+          {isAuthenticated && (
+            <Link
+              to={"/cart"}
+              type="button"
+              className=" my-2 px-4 py-2 border rounded-3xl position-relative mx-3"
+            >
+              <div className="block">
+              <span className="material-symbols-outlined">shopping_cart</span>
+
+              {cart?.items?.length > 0 && (
+                <span className="position-absolute  top-2 start-110 translate-middle badge rounded-pill bg-danger">
+                  {cart?.items?.length}
+                  <span className="visually-hidden">unread messages</span>
+                </span>
+              )}
+              </div>
+            </Link>
+          )}
+          {isAuthenticated && (
+            <Link to={"/login"}>
+              <button
+                className="block my-3 px-4 py-2 bg-red-600 rounded-full hover:bg-blue-700"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </Link>
+          )}
+          {!isAuthenticated && (
+            <Link to={"/login"}>
+              <button className="px-4 py-2 bg-blue-600 rounded-full hover:bg-blue-700">
+                Login
+              </button>
+            </Link>
+          )}
+          </nav>
+       
+        
+      )}
+     
     </header>
+    </>
   );
 };
 
