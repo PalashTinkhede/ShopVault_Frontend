@@ -17,6 +17,8 @@ import OrderConfirmation from './components/OrderConfirmation'
 import Home from "./components/Home";
 import RandomDots from "./components/Randomdots";
 import About from "./components/About";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 const App = () => {
   // const {} = useContext(AppContext)
