@@ -47,12 +47,12 @@ const Navbar = () => {
           >
             Products
           </a></Link>
-          <a
-            href="/about"
+          <Link to={"/about"}><a
+            href=""
             className="hover:text-blue-400 text-gray-300 text-xl"
           >
             About
-          </a>
+          </a></Link>
           <a href="#features" className="hover:text-blue-400 text-gray-300 text-xl">
             Features
           </a>
