@@ -41,12 +41,12 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-16">
-          <a
-            href="/products"
+          <Link to={"/product"}><a
+            href=""
             className="hover:text-blue-400 text-gray-300 text-xl"
           >
             Products
-          </a>
+          </a></Link>
           <a
             href="/about"
             className="hover:text-blue-400 text-gray-300 text-xl"
