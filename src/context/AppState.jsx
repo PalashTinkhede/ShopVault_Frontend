@@ -96,7 +96,7 @@ const AppState = (props) => {
       }
     );
     // alert(api.data.message)
-    console.log(api.data);
+    // console.log(api.data);
     if(api.data.success == false){
       toast.error(api.data.message, {
         position: "top-right",

@@ -27,12 +27,12 @@ function Home() {
               Discover the best products with cutting-edge technology at unbeatable prices.
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a
-                href="/product"
+              <Link to={"/product"}><a
+                href=""
                 className="px-6 py-3 bg-blue-500 rounded-3xl hover:bg-blue-600 text-white"
               >
                 Shop Now
-              </a>
+              </a></Link>
               <a
                 href="#features"
                 className="px-6 py-3 border border-blue-500 rounded-xl hover:bg-blue-500 hover:text-white"
