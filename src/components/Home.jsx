@@ -43,7 +43,7 @@ function Home() {
           </div>
           <div className="mt-10 md:mt-0 w-1/2">
             <img
-              src="https://cdn.prod.website-files.com/6756f8da487a16013fe4bca0/67571846bf53ec3435072781_cy-hero-v1.avif"
+              src="https://static.wixstatic.com/media/c837a6_8abd90a25be34a758931e215516dbd7f~mv2.png/v1/crop/x_1756,y_452,w_3479,h_3461/fill/w_548,h_540,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/new%20first%20fold.png"
               alt="Hero Image"
               className="rounded-lg shadow-lg"
             />
