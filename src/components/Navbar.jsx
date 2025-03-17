@@ -37,13 +37,15 @@ const Navbar = () => {
     <header className="bg-gray-900 text-white">
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo */}
+        <Link to={"/"}>
         <div className="flex items-center space-x-2">
-          <div className="text-3xl font-bold text-blue-500">◎</div>
-          <Link to={"/"}>
+        <img width="32" height="32" src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/228BE6/external-E-commerce-digital-marketing-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png" alt="external-E-commerce-digital-marketing-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan"/>
+          
             {" "}
             <h1 className="text-xl font-semibold">ShopVault</h1>
-          </Link>
+          
         </div>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-16">

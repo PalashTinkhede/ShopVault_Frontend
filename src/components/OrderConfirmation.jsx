@@ -44,7 +44,7 @@ const handleSubmit = async (e) => {
 setFormData({ name: name, email: email, transactionId: formData.transactionId }); // Clear form
 
 // console.log(formData)
-        const response = await axios.post(`${url}/product/send-email`, formData);
+        const response = await axios.post(`${url}/product/email`, formData);
         setResponseMessage(response.data);
         alert("Email is send to owner and will conform the transation id and dispatch product");
         navigate("/")
