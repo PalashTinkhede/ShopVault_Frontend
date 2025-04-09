@@ -17,13 +17,11 @@ function Footer() {
           <h3 className="text-lg font-bold text-white mb-4">Primary Pages</h3>
           <ul className="space-y-2">
             <li>Overview</li>
-            <li>Home V1</li>
-            <li>Home V2</li>
-            <li>Home V3</li>
+            <li>Home</li>
             <li>Features</li>
-            <li>Integrations</li>
-            <li>Integration Single</li>
-            <li>Pricing</li>
+            <li>Product</li>
+            <li>Profile</li>
+            
           </ul>
         </div>
 
@@ -33,11 +31,9 @@ function Footer() {
           <ul className="space-y-2">
             <li>Pricing (without e-com)</li>
             <li>Pricing Single</li>
-            <li>Blog V1</li>
-            <li>Blog V2</li>
-            <li>Blog V3</li>
-            <li>Blog Category</li>
-            <li>Blog Single</li>
+            <li>About</li>
+            <li>Product</li>
+            <li>Features</li>
             <li>About Us</li>
           </ul>
         </div>

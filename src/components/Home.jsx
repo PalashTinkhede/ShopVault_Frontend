@@ -58,7 +58,7 @@ function Home() {
         <div className="mb-8">
           <p className="text-sm text-blue-400 uppercase">Why Us</p>
           <h2 className="text-3xl font-bold">
-            Built for Traders, costemers and clients
+            Built for costemers and clients
           </h2>
           <p className="mt-4 text-gray-400">
             One stop destination for tech related product and best place to buy them.
@@ -111,7 +111,7 @@ function Home() {
             </div>
             <h3 className="text-xl font-bold mb-2">Quality Product</h3>
             <p className="text-gray-400">
-              Lightning-fast blockchain processing.
+              Lightning-fast product processing.
             </p>
           </div>
 
