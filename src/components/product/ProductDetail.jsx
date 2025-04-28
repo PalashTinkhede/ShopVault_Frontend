@@ -62,7 +62,7 @@ const ProductDetail = () => {
 
             {/* Stock Information */}
 
-            {product?.qty == 0 && (
+            {product?.qty <= 0 && (
               <p className="mt-6 text-red-500 font-medium">Out of Stock</p>
             )}
             {product?.qty != 0 && (
